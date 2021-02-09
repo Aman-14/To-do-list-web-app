@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>To Do List</title>
+</head>
+
+<body>
+    <div class="box" id="heading">
+        <h1><%= day %> </h1>
+    </div>
+
+    <div class="box">
+        <% for(let item of items) { %>
+        <div class="item">
+            <form class="cb" action="/delete" method="POST">
+                <input type="checkbox" name="checkbox" value=<%= item._id %> onChange="this.form.submit()">
+                <p><%= item.name %></p>
+                <input type="hidden" name="listName" , value="<%= day %>">
+            </form>
+        </div>
+        <% } %>
+        <form class="item" action="/" method="post">
+            <input type="text" name="new-entry" placeholder="New List Item" autocomplete="off" required>
+            <button type="submit" name="submit" value="<%=day%>">+</button>
+        </form>
+    </div>
+</body>
+
+</html>
